@@ -30,7 +30,7 @@ diabetes_df['Gender'] = diabetes_df['Gender'].astype(int)
 
 # Map CLASS values ('N' -> 0, 'Y' -> 1, 'P' -> 2)
 # Class: Negative (N), Positive (Y), P (Possible)
-class_mapping = {'N': 0, 'Y': 1, 'P': 2}
+class_mapping = {'N': 0, 'Y': 1, 'P':2 }
 diabetes_df['CLASS'] = diabetes_df['CLASS'].map(class_mapping)
 
 # Drop rows with NaN values in any columns left, especially after mapping
