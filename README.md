@@ -1,95 +1,75 @@
-# Diabetes Dataset
+# Diabetes Prediction using Machine Learning Algorithms 
 
 The project entails the factors of diabetes and health markers which help undestand whether there is a correlation of 
 predicting of getting diabetes and its accuracy.
 
 ## Dataset Description
 
-The data features that are included in the dataset are as follows:
+The data were collected from Iraqi society, as data were acquired from the laboratory of Medical City Hospital. Patients’ files were taken and data extracted from them and entered in to the database. The data consist of medical information, laboratory analysis. Data were also entered initially into the system. Columns are: Number of patient, Blood Sugar Level, Age, Gender, Creatinine ratio (Cr), Body Mass Index (BMI), Urea, Cholesterol (Chol), Fasting lipid profile, including total LDL, VLDL, Triglycerides (TG), HDL Cholesterol, HBA1C, and Class (Diabetic, Non-Diabetic, or Predict-Diabetic). Consists of 14 columns in total with exactly 1000 patient data.
 
-No. of Patients
-
-Age
-
-Gender
-
-Urea
-
-Creatinine ratio (Cr)
-
-Body Mass Index (BMI)
-
-Cholesterol (Chol) 
-
-LDL
-
-VLDL
-
-Triglycerides(TG) and 
-
-HDL 
-
-Cholesterol 
-
-HBA1C (Blood Sugar Level)
-
-Class (the patient's diabetes disease classification may be Diabetic, Non-Diabetic, or Predict-Diabetic).
+Source: https://data.mendeley.com/datasets/wj9rwkp9c2/1
 
 ## Summary of Findings
 
-(summary_of_findings) - [text form] This will be a brief summary of the findings of the project.
+We found that BMI, HbA1c, and Age has a positive correlation with class, meaning that they are the most informative feature for predicting diabetes with a score of 0.23, 0.26, and 0.12. Inter-feature relationships such as Urea and Creatinine, two metrics that are indicators of kidney function, have a strong correlation with each other with a score of 0.62. Cholesterol and LDL are moderately correlated. As for the dataset, the dataset was significantly imbalanced. There were 844 patients who has Diabetes, 103 for Non-Diabetic, and 53 individuals who Predict-Diabetic. Some features such as Age are fairly balanced. After oversampling, training, and tuning 4 classification models. Random Forest and SVM achieved the best performance with a near perfect 99% accuracy. This demonstrates their effectiveness in predicting diabetes. Logistic Regression and KNN also performed well. This finding shows that with a good data, features, and machine learning engineering, machine learning can be a valuable tool in predicting diabetes. This can help potential early diagnosis to support healthcare decisions. 
 
 ## Data Preprocessing
 
-(data_preprocessing) - [text form] This will be a brief description of the data preprocessing steps that you have taken to clean and prepare the dataset for analysis.
+One of the first things we did was to drop unnecessary columns such as “ID” and “No_Pation” because they don’t provide any value to the analysis and modeling. Second, we standardized the column names and set all to lower case letters because column names are inconsistent (example: No_Pation, Cr, HbA1c, Cool, BMI). Next was to clean the ‘class’ column (target) because there were inconsistencies on the inputs (as mentioned in the description, data were manually inputted), expected unique values are [Y, P, N] which means DIABETIC, PREDICT-DIABETIC, and NON-DIABETIC, but we found [Y,  Y, P,  N, N], This means that there are spaces around the values. Next, a crucial part of modeling, we encoded categorical values such as Gender and Class (target), to numerical values, 0 for Female, 1 for male, 1, 2, and 3 for the three classes. After encoding, we found a missing value for the target column, stripping spaces didn’t fixed the problem for that one single value, instead we filled it with 1 (there is 1 value for the second N class, we assumed that this is the missing value). Finally, the most important part, oversampling with SMOTE. As seen in the EDA graph for the distribution of class, the dataset was significantly imbalanced (Y = 844, N = 103, P = 53). Oversampling method with SMOTE was used to make the data balanced, we decided not to under sample because the dataset is significantly few, we might lose a lot of data.  For the same reason, we didn’t remove outliers. We also standardized the data for models that are sensitive to feature scales. During our preliminary modeling, SVM achieved a lower accuracy score (around 80%), after standardizing, it significantly improved. The preprocessed data was saved to CSV format.s.
 
 ## Exploratory Data Analysis
 
 ### Visualization
 
-![Figure 1](/assets/Figure_1.png)
-![Figure 2](/assets/Figure_2.png)
-![Figure 3](/assets/Figure_3.png)
-![Figure 4](/assets/Figure_4.png)
-![Figure 5](/assets/Figure_5.png)
-![Figure 6](/assets/Figure_6.png)
-![Figure 7](/assets/Figure_7.png)
-![Figure 8](/assets/Figure_8.png)
-![Figure 9](/assets/Figure_9.png)
-![Figure 10](/assets/Figure_10.png)
-![Figure 11](/assets/Figure_11.png)
-![Figure 12](/assets/Figure_12.png)
 ![Figure 13](/assets/Figure_13.png)
+
+According to the box plot, the majority of ages fall within the middle 50% range, which is 45 to 60 years old. A few individuals who are noticeably older or younger than the main group are shown by outliers that are over 70 and under 40.
+
 ![Figure 14](/assets/Figure_14.png)
+
+With a few extreme outliers ranging up to 35, the central concentration of urea levels is rather modest, typically less than 10. 
+This suggests that urea levels are generally low with sporadic rises.
+
 ![Figure 15](/assets/Figure_15.png)
+
+Most creatinine values are clustered extremely close to zero, there are notable outliers that reach up to about 800, indicating that although normal levels are low, very high readings do occur occasionally.
+
 ![Figure 16](/assets/Figure_16.png)
+
+This plot shows a fairly even distribution of HbA1c levels around the median, with a few outliers above 14. Most values fall between 6 and 10, indicating a relatively controlled distribution with occasional higher readings.
+
 ![Figure 17](/assets/Figure_17.png)
+
+The majority of cholesterol readings fall between 4 and 6, with a few higher outliers reaching about 10. While some persons had noticeably higher cholesterol readings, the majority have moderate levels, according to the central box.
+
+
 ![Figure 18](/assets/Figure_18.png)
+
+Triglyceride levels are clustered at lower values, according to the box plot, with outliers rising over 12. This suggests that most people have low triglyceride levels, while there are a few cases with extremely high levels.
+
+
 ![Figure 19](/assets/Figure_19.png)
+
+HDL levels are generally very low, close to zero, with a few outliers stretching up to about 10. This suggests that most individuals have a low HDL range, with only a few showing significantly higher levels.
+
 ![Figure 20](/assets/Figure_20.png)
+
+LDL levels appear stable, with a box plot concentration between 2 and 4, but there are outliers that go above 8, indicating occasional high LDL levels within a group primarily in the lower range.
+
 ![Figure 21](/assets/Figure_21.png)
+
+VLDL levels are also generally low, with most values close to zero but with a significant number of outliers reaching up to about 35, suggesting rare spikes in VLDL among mostly low values.
+
 ![Figure 22](/assets/Figure_22.png)
+
+BMI values are concentrated around 30, with a slightly wider distribution and some outliers above 40. This suggests that while most individuals are within a specific BMI range, a few have notably higher body mass indexes.
+
+![Figure 1](/assets/Figure_1.png)
+
+This figure shows the distribution of the different classification of patients Diabetic, Non-Diabetic, Predict-Diabetic.
+
 ![Figure 23](/assets/Figure_23.png)
 
-
-From the visualizations provided, here are the insights regarding the distribution of features, outliers in the data, and correlations among features.
-
-Feature Distribution Insights
-Histograms:
-
-Most features like Urea, HDL, VLDL, and TG are skewed to the right, indicating non-normal distributions. This skewness may suggest potential outliers or indicate that transformations (like log-scaling) could improve the normality of these features for certain statistical analyses.
-Age and BMI have more balanced distributions, with BMI centered around 30 and Age showing a peak between 50 and 60 years.
-Class Distribution:
-
-The class distribution shows an imbalance, with the majority of samples classified as "Diabetic." This imbalance will need to be addressed if the dataset is to be used for classification modeling, as it may lead to biased predictions favoring the majority class.
-
-Outliers Analysis
-
-Box Plots:
-Features such as urea, cr, hdl, ldl, and vldl show significant numbers of outliers, especially on the upper end. This is expected given the skewness observed in their distributions.
-These outliers can be impactful depending on the application. They could represent clinically relevant information in a medical dataset (e.g., very high cholesterol levels in certain patients) and might not be suitable for removal in all cases.
-
-Correlation Insights
 
 Correlation Heatmap:
 
@@ -100,17 +80,94 @@ LDL and Chol (0.42): This positive correlation is consistent with the fact that 
 BMI has a moderate correlation with class (0.23), suggesting that BMI might have some predictive value in determining the diabetic class.
 Overall, most correlations are low, indicating that multicollinearity may not be a major concern in this dataset.
 
+
 ## Model Development
 
-(model_development) - [text form] This will be a brief description of the model development process that you have taken to create the model for the project.
+We used the most common algorithms: Logistic Regression, Random Forest, Support Vector Machine (SVM), and k-Nearest Neighbors (k-NN). Implemented GridSearchCV to find the optimal parameters to achieve the best performance on training the models, set hyper parameters for tuning each model, best parameters are: {‘C’:100} for Logistic Regression, {‘max_depth’ : 20, ’n_estimators’: 100} for Random Forest, {‘C’: 100, ‘kernel’: ‘ref’} for SVM, and {’n_neighbors’: 3} for KNN. Implemented SMOTE on the data to balance the classes to prevent bias towards the majority class (Diabetic class). Load the new balanced dataset, separate features (X) and target (y). Split into training and testing sets (80% training, 20% testing).  Finally train the model using .fit().
 
 ## Model Evaluation
 
-(model_evaluation) - [text form] This will be a brief description of the model evaluation process that you have taken to evaluate the model's performance for the project.
+ Each model’s performance was
+evaluated with the help of sk.learn_metrics based on
+accuracy, precision, recall, and F1 score. The goal is to
+reach at least 85% in each model.
+Model: Logistic Regression
+Best Parameters: {'C': 100}
+Accuracy: 0.96
+Precision: 0.96
+Recall: 0.96
+F1 Score: 0.96
+Classification Report:
+ precision recall f1-score support
+ 1 0.97 0.95 0.96 177
+ 2 0.99 0.95 0.97 173
+ 3 0.93 0.98 0.95 157
+ accuracy 0.96 507
+ macro avg 0.96 0.96 0.96 507
+weighted avg 0.96 0.96 0.96 507
+============================================
+======
+Training and tuning Random Forest...
+Model: Random Forest
+Best Parameters: {'max_depth': 20, 'n_estimators': 100}
+Accuracy: 0.99
+Precision: 0.99
+Recall: 0.99
+F1 Score: 0.99
+Classification Report:
+ precision recall f1-score support
+ 1 0.98 1.00 0.99 177
+ 2 1.00 0.98 0.99 173
+ 3 1.00 1.00 1.00 157
+ accuracy 0.99 507
+ macro avg 0.99 0.99 0.99 507
+weighted avg 0.99 0.99 0.99 507
+============================================
+======
+Training and tuning Support Vector Machine...
+Model: Support Vector Machine
+Best Parameters: {'C': 10, 'kernel': 'rbf'}
+Accuracy: 0.99
+Precision: 0.99
+Recall: 0.99
+F1 Score: 0.99
+Classification Report:
+ precision recall f1-score support
+ 1 0.98 1.00 0.99 177
+ 2 1.00 0.97 0.99 173
+ 3 0.99 1.00 1.00 157
+ accuracy 0.99 507
+ macro avg 0.99 0.99 0.99 507
+weighted avg 0.99 0.99 0.99 507
+============================================
+======
+Training and tuning k-Nearest Neighbors...
+Model: k-Nearest Neighbors
+Best Parameters: {'n_neighbors': 3}
+Accuracy: 0.98
+Precision: 0.98
+Recall: 0.98
+F1 Score: 0.98
+Classification Report:
+ precision recall f1-score support
+ 1 0.98 0.99 0.98 177
+ 2 1.00 0.94 0.97 173
+ 3 0.95 1.00 0.98 157
+ accuracy 0.98 507
+ macro avg 0.98 0.98 0.98 507
+weighted avg 0.98 0.98 0.98 507
+============================================
+======
+Each model surpassed the target.
 
 ## Conclusion
 
-(conclusion) - [text form] This will be a brief conclusion of the project, summarizing the key findings and insights from the analysis.
+: Random Forest and SVM models
+achieved a near perfect 99% accuracy, Logistic
+Regression and KNN also performed well. These results
+show that predicting diabetes occurrence is possible with
+machine learning algorithms. Random Forest model is
+recommended with its superior performance.
 
 ## Contributors
 
