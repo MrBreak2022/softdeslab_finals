@@ -5,20 +5,37 @@
 ## Dataset Description
 
 The data that have been entered initially into the system are: 
+
 No. of Patient
+
 Sugar Level Blood
-Age, Gender
+
+Age
+
+Gender
+
 Creatinine ratio (Cr)
+
 Body Mass Index (BMI)
+
 Urea
+
 Cholesterol (Chol) 
+
 Fasting lipid profile, including total, 
-LDL, 
-VLDL, 
+
+LDL
+
+VLDL
+
 Triglycerides(TG) and 
+
 HDL 
+
 Cholesterol 
+
 HBA1C
+
 Class (the patient's diabetes disease class may be Diabetic, Non-Diabetic, or Predict-Diabetic).
 
 ## Summary of Findings
