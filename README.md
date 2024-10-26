@@ -1,28 +1,25 @@
 # Diabetes Dataset
 
-(project_description) - [text form] This will be in the form of a question or a statement that describes the project, like an overview of the project.
+The project entails the factors of diabetes and health markers which help undestand whether there is a correlation of 
+predicting of getting diabetes and its accuracy.
 
 ## Dataset Description
 
-The data that have been entered initially into the system are: 
+The data features that are included in the dataset are as follows:
 
-No. of Patient
-
-Sugar Level Blood
+No. of Patients
 
 Age
 
 Gender
 
+Urea
+
 Creatinine ratio (Cr)
 
 Body Mass Index (BMI)
 
-Urea
-
 Cholesterol (Chol) 
-
-Fasting lipid profile, including total, 
 
 LDL
 
@@ -34,9 +31,9 @@ HDL
 
 Cholesterol 
 
-HBA1C
+HBA1C (Blood Sugar Level)
 
-Class (the patient's diabetes disease class may be Diabetic, Non-Diabetic, or Predict-Diabetic).
+Class (the patient's diabetes disease classification may be Diabetic, Non-Diabetic, or Predict-Diabetic).
 
 ## Summary of Findings
 
