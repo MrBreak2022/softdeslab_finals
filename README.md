@@ -93,8 +93,6 @@ accuracy, precision, recall, and F1 score. The goal is to
 reach at least 85% in each model.
 Model: Logistic Regression
 
-Best Parameters: {'C': 100}
-
 Accuracy: 0.96
 
 Precision: 0.96
@@ -122,7 +120,6 @@ weighted avg 0.96 0.96 0.96 507
 ======
 Training and tuning Random Forest...
 Model: Random Forest
-Best Parameters: {'max_depth': 20, 'n_estimators': 100}
 
 Accuracy: 0.99
 
@@ -154,7 +151,6 @@ Training and tuning Support Vector Machine...
 
 Model: Support Vector Machine
 
-Best Parameters: {'C': 10, 'kernel': 'rbf'}
 
 Accuracy: 0.99
 
@@ -185,8 +181,6 @@ weighted avg 0.99 0.99 0.99 507
 Training and tuning k-Nearest Neighbors...
 
 Model: k-Nearest Neighbors
-
-Best Parameters: {'n_neighbors': 3}
 
 Accuracy: 0.98
 
