@@ -92,69 +92,124 @@ evaluated with the help of sk.learn_metrics based on
 accuracy, precision, recall, and F1 score. The goal is to
 reach at least 85% in each model.
 Model: Logistic Regression
+
 Best Parameters: {'C': 100}
+
 Accuracy: 0.96
+
 Precision: 0.96
+
 Recall: 0.96
+
 F1 Score: 0.96
+
 Classification Report:
+
  precision recall f1-score support
+ 
  1 0.97 0.95 0.96 177
+ 
  2 0.99 0.95 0.97 173
+ 
  3 0.93 0.98 0.95 157
+ 
  accuracy 0.96 507
+ 
  macro avg 0.96 0.96 0.96 507
+ 
 weighted avg 0.96 0.96 0.96 507
 ============================================
 ======
 Training and tuning Random Forest...
 Model: Random Forest
 Best Parameters: {'max_depth': 20, 'n_estimators': 100}
+
 Accuracy: 0.99
+
 Precision: 0.99
+
 Recall: 0.99
+
 F1 Score: 0.99
+
 Classification Report:
+
  precision recall f1-score support
+ 
  1 0.98 1.00 0.99 177
+ 
  2 1.00 0.98 0.99 173
+ 
  3 1.00 1.00 1.00 157
+ 
  accuracy 0.99 507
+ 
  macro avg 0.99 0.99 0.99 507
+ 
 weighted avg 0.99 0.99 0.99 507
+
 ============================================
 ======
 Training and tuning Support Vector Machine...
+
 Model: Support Vector Machine
+
 Best Parameters: {'C': 10, 'kernel': 'rbf'}
+
 Accuracy: 0.99
+
 Precision: 0.99
+
 Recall: 0.99
+
 F1 Score: 0.99
+
 Classification Report:
+
  precision recall f1-score support
+ 
  1 0.98 1.00 0.99 177
+ 
  2 1.00 0.97 0.99 173
+ 
  3 0.99 1.00 1.00 157
+ 
  accuracy 0.99 507
+ 
  macro avg 0.99 0.99 0.99 507
+ 
 weighted avg 0.99 0.99 0.99 507
+
 ============================================
 ======
 Training and tuning k-Nearest Neighbors...
+
 Model: k-Nearest Neighbors
+
 Best Parameters: {'n_neighbors': 3}
+
 Accuracy: 0.98
+
 Precision: 0.98
+
 Recall: 0.98
+
 F1 Score: 0.98
+
 Classification Report:
+
  precision recall f1-score support
+ 
  1 0.98 0.99 0.98 177
+ 
  2 1.00 0.94 0.97 173
+ 
  3 0.95 1.00 0.98 157
+ 
  accuracy 0.98 507
+ 
  macro avg 0.98 0.98 0.98 507
+ 
 weighted avg 0.98 0.98 0.98 507
 ============================================
 ======
